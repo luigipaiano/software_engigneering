@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffbb5f;">
+    
+    <a class="navbar-brand" href="#">MyAirBnB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin-home/{{id}}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin-manage/{{id}}">Gestisci beni e servizi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin-approve/{{id}}">Approva proposte</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<br>
+<p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+<p style="text-align: center">  Id accesso: {{newAdmin.idadmin}}, benvenuto {{newAdmin.utente.nome}} !  </p>
+
+
+
+

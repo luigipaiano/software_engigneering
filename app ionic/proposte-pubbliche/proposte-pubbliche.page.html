@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    <p style="text-align:center">Proposte</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen class="ion-padding">
+    <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+
+<ion-list>
+  <ion-item-sliding *ngFor="let item of proposte">
+    <ion-item>
+
+
+      <ion-card>
+        <div *ngFor="let item2 of immagine; let myIndex2 = index2">
+              <div *ngIf="item2.proposta.idproposta == item.idproposta">
+                
+            <img [src]="item2.percorso"/> <br></div></div>
+
+          
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start"  name="ios-arrow-forward"></ion-icon>
+              <h5><ion-label style="color: #4F4F4F">{{item.nome}}</ion-label></h5>
+          </ion-item-divider>
+
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start"  name="md-text"></ion-icon>
+              <h6><ion-label style="color: #4F4F4F">{{item.descrizione}}</ion-label></h6>
+          </ion-item-divider>
+
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start"  name="ios-link"></ion-icon>
+              <h6><ion-label style="color: #4F4F4F">{{item.idproposta}}</ion-label></h6>
+          </ion-item-divider>
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="ios-people"></ion-icon>
+              <h6><ion-label  style="color:#4F4F4F">{{item.disponibilita}}</ion-label></h6>
+          </ion-item-divider>
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="md-calendar"></ion-icon>
+              <h6><ion-label  style="color:#4F4F4F">dal {{item.datainiziodisp|date}} al <br> {{item.datafinedisp|date}}</ion-label></h6>
+          </ion-item-divider>
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="logo-euro"></ion-icon>
+              <h6><ion-label  style="color:#4F4F4F">{{item.costounitario}} euro</ion-label></h6>
+          </ion-item-divider>
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="ios-pin"></ion-icon>
+              <h6><ion-label  style="color:#4F4F4F">{{item.posizione}}</ion-label></h6>
+          </ion-item-divider>
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="ios-person-add"></ion-icon>
+              <h6><ion-label  style="color:#4F4F4F">{{item.proponente.utente.nome}}</ion-label></h6>
+          </ion-item-divider>
+
+          <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="md-pricetag"></ion-icon>
+              <h6><ion-label  style="color:#4F4F4F">{{item.beneservizio.categoria}}</ion-label></h6>
+          </ion-item-divider>
+          
+
+    </ion-card>
+    </ion-item>
+  </ion-item-sliding>
+</ion-list>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="home" routerLink="/home"></ion-icon>
+
+    </ion-fab-button>
+  </ion-fab>
+
+  <br>
+  <br>
+  
+</ion-content>

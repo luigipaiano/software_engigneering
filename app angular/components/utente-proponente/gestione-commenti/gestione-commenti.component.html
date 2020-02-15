@@ -1,0 +1,124 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffbb5f;">
+    
+    <a class="navbar-brand" href="#">MyAirBnB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+            <li class="nav-item">
+          <a class="nav-link" routerLink="/utente-proponente-dashboard/{{idproponente}}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="problemsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Gestione Proposte
+            </a>
+            <div class="dropdown-menu" aria-labelledby="problemsDropdown">
+              <a class="dropdown-item" routerLink="/inserisci-proposta/{{idproponente}}">Inserisci Proposta</a>
+              <a class="dropdown-item" routerLink="/gestione-proposta/{{idproponente}}">Visualizza e Gestisci Proposte</a>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/visualizza-prenotazioni/{{idproponente}}">Visualizza prenotazioni</a>
+          </li>
+  
+  
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <button type="button" class="btn btn-light">Logout ➡️</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  
+  <br>
+  
+  <p style="text-align: center">  Id proponente: {{newProponente.idproponente}}, benvenut* {{newProponente.utente.nome}} !  </p>
+  
+
+  <div class="card text-center">
+  <div class="card-header">
+    Gestione Commenti
+  </div>
+  <div class="card-body">  
+      <div *ngFor="let item2 of immagine; let myIndex2 = index2">
+        <div *ngIf="item2.proposta.idproposta == idproposta">
+        <img src = {{item2.percorso}} class="card-img-top"> <br><br></div></div>
+            <h5 class="card-title">{{propostacr.nome}}</h5>
+            <h5 class="card-title">{{propostacr.datainizio}}</h5>
+            <p class="text">ID proposta: {{propostacr.idproposta}}</p>
+            <p class="text">📆 dal {{propostacr.datainiziodisp|date}} al <br> {{propostacr.datafinedisp|date}} </p>
+            <p class="text">Disponibilià: {{propostacr.disponibilita}}</p>
+            <p class="text">💰 {{propostacr.costounitario}} €</p>
+            <p class="text">📍 {{propostacr.posizione}}</p>
+            <p class="card-text">{{propostacr.descrizione}}</p>
+            <p class="card-text"><small class="text-muted">Categoria: {{propostacr.beneservizio.categoria}}</small></p>
+            <div class="card-footer text-muted">
+                Commenti <br>
+              </div>
+
+         <div *ngFor="let item3 of commento; let myIndex3 = index3">
+          <div *ngIf="item3.proposta.idproposta == propostacr.idproposta">
+
+
+          <div class="card2 mb-2" style="max-width: 580px;">
+              <div class="row no-gutters">
+                <div class="col-md-2">
+
+                <div *ngIf="item3.acquirente.idacquirente != 0; else elseBlock2">
+                <br><img src="https://cdn3.iconfinder.com/data/icons/lifestyle-5/100/Credit-512.png" class="card-img">
+                 </div>
+
+                 <ng-template #elseBlock2>
+                    <img src="http://cdn.onlinewebfonts.com/svg/img_399511.png" class="card-img"> 
+                 </ng-template>
+            
+               
+
+                <div *ngIf="item3.acquirente.idacquirente != 0; else elseBlock"><p class="card-text"><small class="text-muted">by {{item3.acquirente.utente.nome}} {{item3.acquirente.utente.cognome}}
+                  </small></p> </div>
+                <ng-template #elseBlock><p class="card-text"><small class="text-muted">by me <br> {{newProponente.utente.nome}} {{newProponente.utente.cognome}}
+                  </small></p></ng-template>
+                </div>
+                <div class="col-md-8">
+                  
+                  <div class="card-body">    
+                    <br> <h6 class="card-text">{{item3.descrizione}}</h6>
+                    <p style="text-align: right">  <ng-container *ngFor="let i of [].constructor(item3.val)">⭐</ng-container> </p>
+                    <p class="card-text" style="text-align: right"><small class="text-muted">postato il: {{item3.data| date:'yyyy-MM-dd HH:mm'}}
+                      <br> ID commento: {{item3.idcommento}}
+                    </small></p>
+                  
+                    <div *ngIf="item3.acquirente.idacquirente != 0;">
+                    <p class="card-text" style="text-align: right"><button (click)="rispondi(item3.idcommento)" class="btn btn-warning">Rispondi ↩️</button></p>
+                    </div>
+                    <br>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div></div>
+
+            <form>
+            <div class="form-group">
+           <textarea class="form-control" [(ngModel)]="commentocr.descrizione" class="form-control" name="descrizionearea" id="descrizioneFormControlTextarea1" rows="3"></textarea>
+           </div>
+          </form>
+
+          <p class="card-text"><small class="text-muted">{{replydesc}}</small></p>
+
+          <p class="card-text2" style="text-align: right"><button (click)="invia()" [disabled]="(replydesc == null)" class="btn btn-success">Invia</button></p>
+
+
+      </div></div>
+          <br>
+          <br>
+          <br><br>
+          <br>
+          <br><br>
+          <br>
+          <br>

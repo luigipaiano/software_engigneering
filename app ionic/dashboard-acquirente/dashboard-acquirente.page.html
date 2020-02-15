@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar class="new-background-color">
+        <ion-title>
+    <p style="text-align:center">Dashboard Acquirente</p>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content>
+
+
+    <br>
+    <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+
+    <br>
+    <p style="text-align: center">  Id accesso: {{newAcquirente.idacquirente}}, benvenut* nell'area riservata {{newAcquirente.utente.nome}} !  </p>
+
+    <br>
+
+      <div *ngFor="let item of notifica; let myIndex2 = index2">
+          <div *ngIf="item.tipo == 0">
+          
+          
+            <ion-card>
+                <ion-card-header>
+                  <ion-card-title>{{item.descrizione}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+              <p style="text-align: right">  {{item.data | date:'yyyy-MM-dd HH:mm'}} </p>
+
+                  </ion-card-content>
+              </ion-card>
+            </div></div>
+
+            <div *ngFor="let item of notifica2; let myIndex2 = index2"> 
+            <div *ngFor="let item2 of prenotazioni; let myIndex3 = index3"> 
+
+              
+                <ion-card style="color: red" *ngIf="(item.proposta.idproposta == item2.proposta.idproposta) && (item.tipo == 2)">
+                    <ion-card-header >
+                      <ion-card-title style="color: red">{{item.descrizione}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                  <p style="text-align: right">  {{item.data | date:'yyyy-MM-dd HH:mm'}} </p>
+    
+                      </ion-card-content>
+                  </ion-card>
+                </div>
+            </div>
+
+
+    <br>
+    <ion-button  color="warning" expand="full" routerLink="/proposte-acquirente/{{id_acquirente}}">Visualizza Proposte</ion-button>
+    <br>
+    <ion-button color="danger" expand="full" routerLink="/prenotazioni/{{id_acquirente}}">Visualizza Prenotazioni</ion-button>
+  
+  
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="ios-log-out" routerLink="/login"></ion-icon>
+    
+        </ion-fab-button>
+      </ion-fab>
+      
+      <br>  <br>  <br>  <br> 
+  </ion-content>
+

@@ -1,0 +1,162 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    <p style="text-align:center">Dettagli Proposta</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen class="ion-padding">
+    <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+
+    
+<ion-list>
+  <ion-card>
+    <ion-slides pager="true" [options]="slideOpts" >
+      <ion-slide *ngFor="let itms of imgs">
+        <img src="{{itms.percorso}}">
+        </ion-slide>
+      
+    </ion-slides>
+     
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start"  name="ios-arrow-forward"></ion-icon>
+          <h5><ion-label style="color: #4F4F4F">{{proposta.nome}}</ion-label></h5>
+      </ion-item-divider>
+
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start"  name="md-text"></ion-icon>
+          <h6><ion-label style="color: #4F4F4F">{{proposta.descrizione}}</ion-label></h6>
+      </ion-item-divider>
+
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start"  name="ios-link"></ion-icon>
+          <h6><ion-label style="color: #4F4F4F">{{proposta.idproposta}}</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="ios-people"></ion-icon>
+          <h6><ion-label  style="color:#4F4F4F">{{proposta.disponibilita}}</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="md-calendar"></ion-icon>
+          <h6><ion-label  style="color:#4F4F4F">dal {{proposta.datainiziodisp|date}} al <br> {{proposta.datafinedisp|date}}</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="logo-euro"></ion-icon>
+          <h6><ion-label  style="color:#4F4F4F">{{proposta.costounitario}} euro</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="ios-pin"></ion-icon>
+          <h6><ion-label  style="color:#4F4F4F">{{proposta.posizione}}</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="ios-person-add"></ion-icon>
+          <h6><ion-label  style="color:#4F4F4F">{{proposta.proponente.utente.nome}}</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="md-pricetag"></ion-icon>
+          <h6><ion-label  style="color:#4F4F4F">{{proposta.beneservizio.categoria}}</ion-label></h6>
+      </ion-item-divider>
+
+      <ion-button color="danger" expand="full" (click)="mappa()">Visualizza su mappa</ion-button>
+
+
+    </ion-card>
+
+  </ion-list>
+
+  <br>
+
+  <ng-container   *ngIf="commento?.length > 0">
+
+  <h4 style="text-align:center">Commenti</h4>
+
+
+
+  <div *ngFor="let item3 of commento; let myIndex3 = index3">
+
+
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{item3.descrizione}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        
+
+          <p style="text-align: right">  <ng-container *ngFor="let i of [].constructor(item3.val)">⭐</ng-container> </p>
+
+          <div *ngIf="item3.acquirente.idacquirente != 0; else elseBlock"><p style="text-align: right">  by {{item3.acquirente.utente.nome}} {{item3.acquirente.utente.cognome}}
+           </p> 
+          </div>
+
+
+            <ng-template #elseBlock><p style="text-align: right">  by {{newProponente.utente.nome}} {{newProponente.utente.cognome}} 
+           </ng-template>
+
+
+        </ion-card-content>
+
+    </ion-card>
+    
+  </div>
+
+</ng-container>
+
+  
+
+<br>
+
+<ng-container *ngIf="proposta.disponibilita > 0">
+
+<h4 style="text-align:center">Prenotazione</h4>
+
+
+<ion-item>
+  <ion-label>Checkin</ion-label>
+  <ion-datetime  displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"  min="{{mindate}}" max="{{maxdate}}" [(ngModel)]="start"    ></ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-label>Checkout</ion-label>
+  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" min="{{mindate}}"  max="{{maxdate}}" [(ngModel)]="end" (ionChange)="conta()" ></ion-datetime>
+</ion-item>
+
+<ion-item>Prezzo Totale : {{prezzo}}</ion-item>
+
+
+<ion-item>
+  <ion-label>Metodo di Pagamento</ion-label>
+  <ion-select [(ngModel)]="pagamento">
+    <ion-select-option >Contanti</ion-select-option>
+    <ion-select-option >Carta</ion-select-option>
+    <ion-select-option >Bonfico</ion-select-option>
+    
+  </ion-select>
+</ion-item>
+<br>
+<br>
+<ion-button color="warning" expand="full" (click)="prenota()">Prenota</ion-button>
+<br>
+<br>
+<br>
+</ng-container> 
+<br>
+
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button>
+      <ion-icon name="ios-undo" routerLink="/proposte-acquirente/{{id_utente}}"></ion-icon>
+
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>

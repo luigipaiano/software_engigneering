@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+  <ion-title>
+  <p style="text-align:center">Registrazione</p>
+    </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+  <br>
+    <form  [formGroup]="loginForm" >
+
+
+      <h5 style="text-align:center;">    Per procedere con la registrazione è necessario compilare tutti i campi sottostanti.  </h5>
+      <br>
+
+    <ion-list>
+        <ion-item>
+          <ion-label color="primary">Nome</ion-label>
+          <ion-input formControlName="name" [(ngModel)]="acquirentecr.utente.nome" type="text" placeholder="Nome"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label color="primary" fixed>Cognome</ion-label>
+          <ion-input formControlName="surname" [(ngModel)]="acquirentecr.utente.cognome" type="text" placeholder="Cognome"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label color="primary" fixed>Username</ion-label>
+          <ion-input formControlName="username" [(ngModel)]="acquirentecr.utente.username" type="text" placeholder="Username"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label color="primary" stacked>Password</ion-label>
+          <ion-input formControlName="password" [(ngModel)]="acquirentecr.utente.password" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label color="primary" stacked>Email</ion-label>
+          <ion-input formControlName="email" [(ngModel)]="acquirentecr.utente.email" type="email" placeholder="Email"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+            <ion-label color="primary" stacked>Telefono</ion-label>
+            <ion-input formControlName="telefono" [(ngModel)]="acquirentecr.telefono" type="number" placeholder="Telefono"></ion-input>
+          </ion-item>
+      
+         
+          <ion-item>
+              <ion-label color="primary" stacked>Indirizzo</ion-label>
+              <ion-input formControlName="indirizzo" [(ngModel)]="acquirentecr.indirizzo" type="text" placeholder="Indirizzo"></ion-input>
+            </ion-item>
+      
+            <ion-item>
+                <ion-label color="primary" stacked>Città</ion-label>
+                <ion-input formControlName="citta" [(ngModel)]="acquirentecr.citta" type="text" placeholder="Città"></ion-input>
+              </ion-item>
+      </ion-list>
+
+      <br>
+      <ion-button  [disabled]="!loginForm.valid" expand="full" color="warning" (click)="registrati()">Registrazione</ion-button>
+
+    </form>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="home" routerLink="/home"></ion-icon>
+
+  </ion-fab-button>
+</ion-fab>
+
+<br><br><br>
+<br>
+</ion-content>

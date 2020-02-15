@@ -1,0 +1,33 @@
+<body>
+<p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+
+<h3 style="text-align: center">Login</h3>
+<br>
+
+<form #userForm="ngForm">
+
+  <div class="form-group">
+    <label for="exampleInputUsername">Username</label>
+    <input required type="text" #newUsername="ngModel" class="form-control" [(ngModel)]="username" name="username" id="exampleInputUsername" aria-describedby="UsernameHelp" placeholder="Inserisci username">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input required type="password" #newPassword="ngModel" class="form-control" [(ngModel)]="password" name="password"id="exampleInputPassword1" placeholder="Inserisci Password">
+  
+  <button [disabled]="userForm.invalid" (click)="onSubmit()" type="submit" class="btn btn-primary" >Invia</button>
+</div>
+
+</form>
+<br>
+<br>
+<button type="button" class="btn btn-warning float-right" routerLink="/registrazione"> Non sei registrato al servizio ? Registrati ora !</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> 
+      <p style="text-align:center">Login</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+  <ion-item>
+    <ion-label position="floating">Username</ion-label>
+    <ion-input type="text" #username></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" #password></ion-input>
+  </ion-item>
+  <br>
+
+
+<ion-button icon="ios-log-in" color="warning" expand="full" (click)="signIn()">Accedi</ion-button>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="home" routerLink="/home"></ion-icon>
+
+      </ion-fab-button>
+    </ion-fab>
+  
+  
+</ion-content>

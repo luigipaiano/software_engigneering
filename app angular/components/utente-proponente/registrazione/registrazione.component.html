@@ -1,0 +1,85 @@
+<body>
+    <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+    
+    <h3 style="text-align: center">Registrazione Utente Proponente</h3>
+    <br>
+    
+
+
+
+    <form #userForm="ngForm">
+    <div class="form-row">
+
+      <div class="col-md-6 mb-3">
+
+        <label for="exampleInputNome">Nome</label>
+        <input required type="text" #newNome="ngModel" class="form-control" [(ngModel)]="utentecr.nome" name="nome" id="exampleInputNome" aria-describedby="NomeeHelp" placeholder="Inserisci nome">
+      </div>
+
+    <div class="col-md-6 mb-3">
+
+        <label for="exampleInputNome">Cognome</label>
+        <input required type="text" #newCognome="ngModel" class="form-control" [(ngModel)]="utentecr.cognome" name="cognome" id="exampleInputCognome" aria-describedby="NomeeHelp" placeholder="Inserisci cognome">
+      </div>
+    
+      <div class="form-row">
+
+      <div class="col-md-6 mb-3">
+        <label for="exampleInputUsername">Username</label>
+        <input required type="text" #newUsername="ngModel" class="form-control" [(ngModel)]="utentecr.username" name="username" id="exampleInputUsername" aria-describedby="UsernameHelp" placeholder="Inserisci username">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="exampleInputPassword1">Password</label>
+        <input required type="password" #newPassword="ngModel" class="form-control" [(ngModel)]="utentecr.password" name="password"id="exampleInputPassword1" placeholder="Inserisci Password">
+      </div>
+    </div>
+
+    <div class="form-row">
+
+      <div class="col-md-6 mb-3">
+        <label for="exampleInputEmail">Email</label>
+        <input required type="email" #newEmail="ngModel" class="form-control" [(ngModel)]="utentecr.email" name="email"id="exampleInputEmail" placeholder="Inserisci Email">
+      </div>
+
+
+      <div class="col-md-6 mb-3">
+        <label for="exampleInputEmail">Telefono</label>
+        <input required type="number" #newTelefono="ngModel" class="form-control" [(ngModel)]="proponentecr.telefono" name="telefono"id="exampleInputTelefono" placeholder="Inserisci Telefono">
+      </div>
+    </div>
+
+
+    <div class="form-row">
+    <div class="col-md-6 mb-3">
+          <label for="exampleInputIndirizzo">Indirizzo</label>
+          <input required type="text" #newIndirizzo="ngModel" class="form-control" [(ngModel)]="proponentecr.indirizzo" name="indirizzo"id="exampleInputIndirizzo" placeholder="Inserisci Indirizzo">
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="exampleInputIndirizzo">Città</label>
+          <input required type="text" #newCitta="ngModel" class="form-control" [(ngModel)]="proponentecr.citta" name="citta"id="exampleCitta" placeholder="Inserisci Città">
+        </div>
+
+      </div>
+
+      <div class="col-md-3 mb-3">
+          <label for="exampleInputIndirizzo">Cap</label>
+          <input required type="number" #newCap="ngModel" class="form-control" [(ngModel)]="proponentecr.cap" name="cap"id="exampleCap" placeholder="Inserisci Cap">
+        </div>
+        <br>
+      <button [disabled]="userForm.invalid" (click)="registrati()" type="submit" class="btn btn-primary" >Registrati</button>
+    </div>
+    </form>
+    <br>
+    <br>
+    <button type="button" class="btn btn-warning float-right" routerLink="/"> Torna alla Home !</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    </body>
+    

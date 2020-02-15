@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title> 
+        <p style="text-align:center">Mappa</p>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+  <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+  
+    <div #mapElement class="map"></div>
+  </ion-content>
+
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button>
+          <ion-icon name="ios-undo" routerLink="/booking/{{proposal_id}}/{{acquirente_id}}"></ion-icon>
+    
+      </ion-fab-button>
+    </ion-fab>
+  

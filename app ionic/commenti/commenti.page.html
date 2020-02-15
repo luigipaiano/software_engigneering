@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista commenti</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of commenti">
+
+            <ion-item style="background-color: coral" *ngIf="item.acquirente.utente == null">
+                <ion-card style="width: 10000px;background-color: coral" >
+                   
+                      <div class="text">ID :{{item.idcommento}}</div>
+                      <div class="number">Indice Gradimento :{{item.val}}</div>
+                      <div class="text">Testo commento :{{item.descrizione}} </div>
+    
+                      <br>
+    
+              </ion-card>
+              </ion-item>
+
+
+
+          <ion-item style="background-color: yellow" *ngIf="item.acquirente.utente != null && item.acquirente.idacquirente != id_utente">
+            <ion-card style="width: 10000px;background-color: yellow" >
+               
+                  <div class="text">ID :{{item.idcommento}}</div>
+                  <div class="number">Indice Gradimento :{{item.val}}</div>
+                  <div *ngIf="item.acquirente.utente != null" class="text">Aggiunto da :{{item.acquirente.utente.nome}} {{item.acquirente.utente.cognome}}</div>
+                  <div class="text">Testo commento :{{item.descrizione}} </div>
+
+                  <br>
+
+          </ion-card>
+          </ion-item>
+
+          <ion-item style="background-color: orange" *ngIf="item.acquirente.idacquirente === id_utente">
+              <ion-card style="width: 10000px;background-color: orange" >
+                 
+                    <div class="text">ID :{{item.idcommento}}</div>
+                    <div class="number">Indice Gradimento :{{item.val}}</div>
+                    <div *ngIf="item.acquirente.utente != null" class="text">Aggiunto da :{{item.acquirente.utente.nome}} {{item.acquirente.utente.cognome}}</div>
+                    <div class="text">Testo commento :{{item.descrizione}} </div>
+
+  
+                    <br>
+  
+            </ion-card>
+            </ion-item>
+
+            
+            
+        </ion-item-sliding>
+      </ion-list>
+
+
+</ion-content>

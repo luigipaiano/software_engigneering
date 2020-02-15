@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+      <p style="text-align:center">Prenotazioni</p>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content fullscreen class="ion-padding">
+      <p style="text-align:center;"><img src ="assets/images/logobb.png" alt="logo" style="width:500px;"></p>
+  
+  
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of prenotazioni">
+       
+        <ion-item>   
+  
+              <ion-card style="width: 10000px" >
+  
+                <ion-item-divider>
+                  <ion-icon style="color:black" slot="start"  name="ios-arrow-forward"></ion-icon>
+                  <h5><ion-label style="color: black">{{item.proposta.nome}}</ion-label></h5>
+              </ion-item-divider>
+  
+              <ion-item-divider>
+                <ion-icon style="color:black" slot="start" name="ios-person-add"></ion-icon>
+                <h6><ion-label  style="color:black"> Locatore: {{item.proposta.proponente.utente.nome}} {{item.proposta.proponente.utente.cognome}}</ion-label></h6>
+            </ion-item-divider>
+  
+  
+            <ion-item-divider>
+              <ion-icon style="color:black" slot="start" name="md-pricetag"></ion-icon>
+              <h6><ion-label  style="color:black">{{item.proposta.beneservizio.categoria}}</ion-label></h6>
+          </ion-item-divider>
+            
+          <ion-item-divider>
+            <ion-icon style="color:black" slot="start"  name="ios-link"></ion-icon>
+            <h6><ion-label style="color:black">{{item.idprenotazione}}</ion-label></h6>
+        </ion-item-divider>
+        
+          <ion-item-divider>
+            <ion-icon style="color:black" slot="start" name="md-calendar"></ion-icon>
+            <h6><ion-label  style="color:black">dal {{item.datacheckin|date}} al {{item.datacheckout|date}}</ion-label></h6>
+        </ion-item-divider>
+  
+          <ion-item-divider>
+            <ion-icon style="color:black" slot="start" name="logo-euro"></ion-icon>
+            <h6><ion-label  style="color:black">{{item.costotot}} euro</ion-label></h6>
+        </ion-item-divider>
+            
+  
+        <ion-item-divider>
+          <ion-icon style="color:black" slot="start" name="ios-pin"></ion-icon>
+          <h6><ion-label  style="color: black">{{item.proposta.posizione}}</ion-label></h6>
+      </ion-item-divider>
+      
+                    <ion-button color="danger" expand="full" (click)="sblocca()">Commenta</ion-button>
+  
+                    <ion-item *ngIf=" val != 0">
+                        <ion-label color="primary" stacked> Commento</ion-label>
+                        <ion-textarea type="text" placeholder="Testo Commento" [(ngModel)]="commento.descrizione"></ion-textarea>
+  
+                      </ion-item>
+  
+                      <ion-item  *ngIf=" val != 0">
+                          <ion-label>Indice Gradimento</ion-label>
+                          <ion-select [(ngModel)]="valeue" okText="Okay" cancelText="Dismiss">
+                            <ion-select-option value="1">1</ion-select-option>
+                            <ion-select-option value="2">2</ion-select-option>
+                            <ion-select-option value="3">3</ion-select-option>
+                            <ion-select-option value="4">4</ion-select-option>
+                            <ion-select-option value="5">5</ion-select-option>
+  
+                          </ion-select>
+                        </ion-item>
+  
+  
+                    <ion-button color="warning" *ngIf=" val != 0" expand="full" (click)="invia(item)">Invia</ion-button>
+        
+                    </ion-card>
+                  </ion-item>
+                </ion-item-sliding>
+            
+              </ion-list>
+     
+    
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+          <ion-icon name="home" routerLink="/dashboard-acquirente/{{id_acquirente}}/"></ion-icon>
+  
+      </ion-fab-button>
+    </ion-fab>
+  
+    <br>
+    <br>
+    <br>
+    
+  </ion-content>
